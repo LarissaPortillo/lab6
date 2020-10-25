@@ -91,8 +91,8 @@ d3.csv('https://cdn.glitch.com/ee969b39-5890-4207-8b9e-31577b0b6838%2Funemployme
     +d.Agriculture
     +d["Mining and Extraction"]
   
-  ), d=>
-    d.date); 
+  ), 
+  d=> d.date); 
     
   console.log("o",origin);
   console.log("total",total)
