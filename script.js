@@ -41,10 +41,21 @@ d3.csv('https://cdn.glitch.com/ee969b39-5890-4207-8b9e-31577b0b6838%2Funemployme
           if (o === "date") continue;
           else total += +d[o];
         };
-    });
+    });});
+    
+  let origin = d3.rollups(data, v=>v.length, d=>{
+     const total = 0;
+        for (var o in d) {
+          if (o === "date") continue;
+          else total += +d[o];
+        };
+    return total;
+  }); 
+    
+  console.log("o",origin);
 //((+d.v) + (+d.Manufacturing) + (+d.Leisure) + (+d.Business)+ (+d.Construction)+ (+d.Education)+ (+d.Government) + (+d.Finance) + (+d.Self)+ (+d.Other)+ (+d.Transportation)+ (+d.Information)+ (+d.Agriculture)+ (+d.Mining)) ; })
   
-  console.log("total",t);
+  //console.log("total",t);
   
 });
 
