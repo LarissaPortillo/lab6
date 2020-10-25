@@ -4,6 +4,7 @@ d3.csv('https://cdn.glitch.com/ee969b39-5890-4207-8b9e-31577b0b6838%2Funemployme
   data=data;
   
   console.log("data",data);
+  /*
   
   let total = data.row(function(d) { 
         const total = 0;
@@ -29,10 +30,21 @@ d3.csv('https://cdn.glitch.com/ee969b39-5890-4207-8b9e-31577b0b6838%2Funemployme
           "Mining and Extraction":d["Mining and Extraction"],
           total: total
         };
-      })
+      }).get(function(error, rows) { 
+        console.log(rows); 
+      });
+  */
+  const t= data.rollup(function(leaves){
+    return d3.sum(leaves, function(d){
+        const total = 0;
+        for (var o in d) {
+          if (o === "date") continue;
+          else total += +d[o];
+        };
+    });
 //((+d.v) + (+d.Manufacturing) + (+d.Leisure) + (+d.Business)+ (+d.Construction)+ (+d.Education)+ (+d.Government) + (+d.Finance) + (+d.Self)+ (+d.Other)+ (+d.Transportation)+ (+d.Information)+ (+d.Agriculture)+ (+d.Mining)) ; })
   
-  console.log("total",total);
+  console.log("total",t);
   
 });
 
