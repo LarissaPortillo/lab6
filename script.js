@@ -5,6 +5,9 @@ d3.csv('https://cdn.glitch.com/ee969b39-5890-4207-8b9e-31577b0b6838%2Funemployme
   
   console.log("data",data);
   
+  const total=d3.sum(data);
+  console.log("total",total);
+  
 });
 
 const margin = ({top: 10, right: 10, bottom: 20, left: 40});
