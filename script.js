@@ -5,7 +5,7 @@ d3.csv('https://cdn.glitch.com/ee969b39-5890-4207-8b9e-31577b0b6838%2Funemployme
   
   console.log("data",data);
   
-  let total = d3.rollups(data, v => d3.sum(v, d => { return d.Wholesale }), d=> d.date)
+  let total = d3.rollups(data, v=>v.length, d=> d.date)
 //((+d.v) + (+d.Manufacturing) + (+d.Leisure) + (+d.Business)+ (+d.Construction)+ (+d.Education)+ (+d.Government) + (+d.Finance) + (+d.Self)+ (+d.Other)+ (+d.Transportation)+ (+d.Information)+ (+d.Agriculture)+ (+d.Mining)) ; })
   
   console.log("total",total);
