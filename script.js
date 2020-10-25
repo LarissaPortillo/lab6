@@ -24,7 +24,7 @@ d3.csv('https://cdn.glitch.com/ee969b39-5890-4207-8b9e-31577b0b6838%2Funemployme
           Finance:d.Finance,
           "Self-employed":d["Self-employed"],
           Other:d.Other,
-          Transportation:d.Transportation,
+          "Transportation and Utilities":d.["Transportation and Utilities"],
           Information:d.Information,
           Agriculture:d.Agriculture,
           "Mining and Extraction":d["Mining and Extraction"],
@@ -53,12 +53,28 @@ d3.csv('https://cdn.glitch.com/ee969b39-5890-4207-8b9e-31577b0b6838%2Funemployme
       + (+d.Finance) 
       + (+d["Self-employed"])
       + (+d.Other)
-      + (+d.Transportation)
+      + (+d.["Transportation and Utilities"])
       + (+d.Information)
       + (+d.Agriculture)
       + (+d["Mining and Extraction"])
     */
-  let origin = d3.rollups(data, v => d3.sum(v, d=>d.Agriculture+d.Construction), d=>d.date); 
+  let origin = d3.rollups(data, v => d3.sum(v, d=>
+    d["Wholesale and Retail Trade"]
+    +d.Manufacturing
+    +d["Leisure and hospitality"]
+    +d["Business services"]
+    +d.Construction
+    +d["Education and Health"]
+    +d.Government
+    +d.Finance
+    +d["Self-employed"]
+    +d.Other
+    //+d.Transportation
+    +d.Information
+    +d.Agriculture
+    +d["Mining and Extraction"]
+  
+  ), d=>d.date); 
     
   console.log("o",origin);
 //((+d.v) + (+d.Manufacturing) + (+d.Leisure) + (+d.Business)+ (+d.Construction)+ (+d.Education)+ (+d.Government) + (+d.Finance) + (+d.Self)+ (+d.Other)+ (+d.Transportation)+ (+d.Information)+ (+d.Agriculture)+ (+d.Mining)) ; })
