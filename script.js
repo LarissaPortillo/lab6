@@ -34,7 +34,8 @@ d3.csv('https://cdn.glitch.com/ee969b39-5890-4207-8b9e-31577b0b6838%2Funemployme
         console.log(rows); 
       });
   */
-  const t= data.rollup(function(leaves){
+  /*
+  const t= d3.rollup(function(leaves){
     return d3.sum(leaves, function(d){
         const total = 0;
         for (var o in d) {
@@ -42,15 +43,22 @@ d3.csv('https://cdn.glitch.com/ee969b39-5890-4207-8b9e-31577b0b6838%2Funemployme
           else total += +d[o];
         };
     });});
-    
-  let origin = d3.rollups(data, v=>v.length, d=>{
-     const total = 0;
-        for (var o in d) {
-          if (o === "date") continue;
-          else total += +d[o];
-        };
-    return total;
-  }); 
+      (+d["Wholesale and Retail Trade"]) 
+      + (+d.Manufacturing) 
+      + (+d["Leisure and hospitality"]) 
+      + (+d["Business services"])
+      + (+d.Construction)
+      + (+d["Education and Health"])
+      + (+d.Government) 
+      + (+d.Finance) 
+      + (+d["Self-employed"])
+      + (+d.Other)
+      + (+d.Transportation)
+      + (+d.Information)
+      + (+d.Agriculture)
+      + (+d["Mining and Extraction"])
+    */
+  let origin = d3.rollups(data, v => d3.sum(v, d=>d.Agriculture+d.Construction), d=>d.date); 
     
   console.log("o",origin);
 //((+d.v) + (+d.Manufacturing) + (+d.Leisure) + (+d.Business)+ (+d.Construction)+ (+d.Education)+ (+d.Government) + (+d.Finance) + (+d.Self)+ (+d.Other)+ (+d.Transportation)+ (+d.Information)+ (+d.Agriculture)+ (+d.Mining)) ; })
