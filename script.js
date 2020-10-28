@@ -151,6 +151,9 @@ const area= d3.area()
 
 
 
+
+
+  
 // input: selector for a chart container e.g., ".chart"
 function AreaChart(container){
 
@@ -168,7 +171,3 @@ function AreaChart(container){
 		update // ES6 shorthand for "update": update
 	};
 }
-
-
-
-  
