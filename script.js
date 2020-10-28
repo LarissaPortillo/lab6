@@ -114,4 +114,46 @@ const svg = d3.select("body")
     .attr("transform",`translate(${margin.left}, ${margin.top})`);
 
 
+
+ xScale = d3.scaleTime()                       
+   .range([0, width]);    
+
+  yScale = d3.scaleLinear()                           
+    .range([height, 0]);
+
+
+svg.append("g")
+  .attr("class", "x-axis")
+  .attr("transform", `translate(0, ${height})`);
+ 
+  
+svg.append("g")
+  .attr("class", "y-axis");
+
+
+svg.append('text')
+  .attr("class","y-axis-title");
+
+
+
+// input: selector for a chart container e.g., ".chart"
+function AreaChart(container){
+
+	// initialization
+
+	function update(data){ 
+
+		// update scales, encodings, axes (use the total count)
+    xScale.domain();
+    yScale.domain();
+		
+	}
+
+	return {
+		update // ES6 shorthand for "update": update
+	};
+}
+
+
+
   
