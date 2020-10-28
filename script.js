@@ -58,6 +58,8 @@ d3.csv('https://cdn.glitch.com/ee969b39-5890-4207-8b9e-31577b0b6838%2Funemployme
       + (+d.Agriculture)
       + (+d["Mining and Extraction"])
     */
+
+  
   let total= d3.sum(data,d=>
     d["Wholesale and Retail Trade"]
     +d.Manufacturing
@@ -94,8 +96,7 @@ d3.csv('https://cdn.glitch.com/ee969b39-5890-4207-8b9e-31577b0b6838%2Funemployme
   ), 
   d=> d.date); 
   
-  const rowTotal=(d=>{
-    let t = d3.rollups(data, v => d3.sum(v, d=>
+  let t = d3.rollups(data, v => d3.sum(v, d=>
     d["Wholesale and Retail Trade"]
     +d.Manufacturing
     +d["Leisure and hospitality"]
@@ -113,7 +114,8 @@ d3.csv('https://cdn.glitch.com/ee969b39-5890-4207-8b9e-31577b0b6838%2Funemployme
   
   ), 
   d=> d.date); 
-    return{
+  var rowTotal= function(d){
+    return{ 
       date: d.date,
       "Wholesale and Retail Trade":d["Wholesale and Retail Trade"],
       Manufacturing: d.Manufacturing,
@@ -131,7 +133,8 @@ d3.csv('https://cdn.glitch.com/ee969b39-5890-4207-8b9e-31577b0b6838%2Funemployme
       "Mining and Extraction":d["Mining and Extraction"],
       total: t[1]
     };
-  })
+  };
+  
   console.log("row",rowTotal);
     
   console.log("o",origin);
