@@ -100,9 +100,8 @@ d3.csv('https://cdn.glitch.com/ee969b39-5890-4207-8b9e-31577b0b6838%2Funemployme
   
   //console.log("total",t);
   
-});
-
-const margin = ({top: 10, right: 10, bottom: 20, left: 40});
+  
+  const margin = ({top: 10, right: 10, bottom: 20, left: 40});
   
 const width = 500-margin.left-margin.right, height = 400-margin.top - margin.bottom;
 
@@ -136,12 +135,21 @@ svg.append("g")
 svg.append('text')
   .attr("class","y-axis-title");
 
-const area=d3.area()
-  .attr("class","a")
+const area= d3.area()
+   //.attr("class","a")
   .defined(d=>{return d.Agriculture >=0;})
   .x(d=>{return xScale(d.date);})
-  .y0(d=>{reurn yScale.range()[0];})
+  .y0(d=>{return yScale.range()[0];})
   .y1(d=>{return yScale(d.Agriculture);});
+
+  svg.append("path")
+    .datum(data)
+    .attr("class","area")
+    .attr("d",area);
+  
+});
+
+
 
 // input: selector for a chart container e.g., ".chart"
 function AreaChart(container){
@@ -151,7 +159,7 @@ function AreaChart(container){
 	function update(data){ 
     
 		// update scales, encodings, axes (use the total count)
-    xScale.domain([d3.min(data,d =>{return d.date;}),d3.max(data,d=>{return d.date;}]);
+    xScale.domain([d3.min(data,d =>{return d.date;}),d3.max(data,d=>{return d.date;} )]);
     yScale.domain([0,d3.max(data,d=>{return d.Agriculture})]);
 		
 	}
