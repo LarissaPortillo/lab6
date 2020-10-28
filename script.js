@@ -115,10 +115,12 @@ const svg = d3.select("body")
 
 
 
- xScale = d3.scaleTime()                       
+ xScale = d3.scaleTime()  
+  .domain([d3.min(data,d =>{return d.date;}),d3.max(data,d=>{return d.date;}) ])
    .range([0, width]);    
 
-  yScale = d3.scaleLinear()                           
+  yScale = d3.scaleLinear()       
+    .domain([0,d3.max(data,d=>{return d.Agriculture})])
     .range([height, 0]);
 
 
@@ -134,7 +136,12 @@ svg.append("g")
 svg.append('text')
   .attr("class","y-axis-title");
 
-
+const area=d3.area()
+  .attr("class","a")
+  .defined(d=>{return d.Agriculture >=0;})
+  .x(d=>{return xScale(d.date);})
+  .y0(d=>{reurn yScale.range()[0];})
+  .y1(d=>{return yScale(d.Agriculture);});
 
 // input: selector for a chart container e.g., ".chart"
 function AreaChart(container){
@@ -142,10 +149,10 @@ function AreaChart(container){
 	// initialization
 
 	function update(data){ 
-
+    
 		// update scales, encodings, axes (use the total count)
-    xScale.domain();
-    yScale.domain();
+    xScale.domain([d3.min(data,d =>{return d.date;}),d3.max(data,d=>{return d.date;}]);
+    yScale.domain([0,d3.max(data,d=>{return d.Agriculture})]);
 		
 	}
 
