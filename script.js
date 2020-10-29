@@ -144,7 +144,7 @@ d3.csv('https://cdn.glitch.com/ee969b39-5890-4207-8b9e-31577b0b6838%2Funemployme
   //console.log("total",t);
   
   
-  const margin = ({top: 10, right: 10, bottom: 20, left: 40});
+const margin = ({top: 10, right: 10, bottom: 20, left: 40});
   
 const width = 500-margin.left-margin.right, height = 400-margin.top - margin.bottom;
 
